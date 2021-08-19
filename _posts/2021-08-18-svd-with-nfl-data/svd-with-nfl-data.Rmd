@@ -29,10 +29,13 @@ This was one of the most facinating concepts to me when I began my graduate prog
 I wanted to walk through an example from scratch in R. I'll be using open source NFL data provided by **nflreadr** and the open source developers of **nflverse**. You can check out their work at https://github.com/nflverse.
 
 ```{r}
-
+library(tidyverse)
 players <- nflreadr::load_player_stats(seasons = c(2014:2020), file_type = 'rds')
 
 rosters <- nflreadr::load_rosters(c(2014:2020))
+
+pbp <- nflreadr::load_pbp(2014:2020, file_type = 'rds')
+
 
 pbp_roster <- pbp %>% 
   left_join(rosters %>% 
