@@ -1,0 +1,17 @@
+---
+title: "About"
+description: |
+  Lover of dogs, cold brew, and all things data
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Ryan Plain
+
+Data Analyst at [Southwest Airlines](https://www.southwest.com/). Graduate student studying Analytics at [Georgia Tech](https://pe.gatech.edu/degrees/analytics). 
+
+I created this to show things I have been working on, either personal projects or for school. A goal for 2021 is to take part in [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) to practice implementation of new models and packages. 
+
+Get in touch with me on Twitter [\@RyanPlain](https://twitter.com/RyanPlain)

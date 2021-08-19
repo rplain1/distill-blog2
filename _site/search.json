@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About",
+      "description": "Lover of dogs, cold brew, and all things data",
+      "author": [],
+      "contents": "\nRyan Plain\nData Analyst at Southwest Airlines. Graduate student studying Analytics at Georgia Tech.\nI created this to show things I have been working on, either personal projects or for school. A goal for 2021 is to take part in Tidy Tuesday to practice implementation of new models and packages.\nGet in touch with me on Twitter @RyanPlain\n\n\n\n",
+      "last_modified": "2021-01-12T16:28:03-06:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Stats by Ryan",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-01-15T15:45:48-06:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
