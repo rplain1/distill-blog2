@@ -1496,6 +1496,47 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><strong>dist_from_sticks</strong>: where they were targeted relative to distance needed to continue drive</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='va'>players</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_player_stats.html'>load_player_stats</a></span><span class='op'>(</span>seasons <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2020</span><span class='op'>)</span>, file_type <span class='op'>=</span> <span class='st'>'rds'</span><span class='op'>)</span>
+
+<span class='va'>rosters</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_rosters.html'>load_rosters</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2020</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>pbp</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_pbp.html'>load_pbp</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2020</span>, file_type <span class='op'>=</span> <span class='st'>'rds'</span><span class='op'>)</span>
+
+
+<span class='va'>pbp_roster</span> <span class='op'>&lt;-</span> <span class='va'>pbp</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>rosters</span> <span class='op'>%&gt;%</span> 
+              <span class='fu'>select</span><span class='op'>(</span><span class='va'>position</span>, <span class='va'>season</span>, <span class='va'>gsis_id</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'fantasy_id'</span> <span class='op'>=</span> <span class='st'>'gsis_id'</span>, <span class='st'>'season'</span><span class='op'>)</span><span class='op'>)</span>
+  
+
+<span class='va'>wr</span> <span class='op'>&lt;-</span> <span class='va'>pbp_roster</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>position</span> <span class='op'>==</span> <span class='st'>'WR'</span><span class='op'>)</span> 
+  
+<span class='va'>wr_stats_full</span> <span class='op'>&lt;-</span> <span class='va'>wr</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>outside_pass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>pass_location</span> <span class='op'>!=</span> <span class='st'>'middle'</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>,
+         pass_air_yards <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>air_yards</span><span class='op'>)</span>, <span class='fl'>0</span>, <span class='va'>air_yards</span><span class='op'>)</span>,
+         pass_air_yards <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>ydstogo</span> <span class='op'>&lt;=</span> <span class='fl'>10</span>, <span class='va'>pass_air_yards</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>receiver_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span>
+    rec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>complete_pass</span><span class='op'>)</span>,
+    air_yards <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pass_air_yards</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    yards_per_target <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>yards_gained</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    yards_after_catch <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>yards_after_catch</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    td_rate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pass_touchdown</span><span class='op'>)</span>,
+    outside_rec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>outside_pass</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    dist_from_sticks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pass_air_yards</span> <span class='op'>-</span> <span class='va'>ydstogo</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>rec</span> <span class='op'>&gt;</span> <span class='fl'>50</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>pbp</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>receiver_id</span>, <span class='va'>receiver</span>, <span class='va'>posteam</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>receiver_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>rn <span class='op'>=</span> <span class='fu'>row_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>rn</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span>, <span class='op'>-</span><span class='va'>rn</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>relocate</span><span class='op'>(</span><span class='va'>receiver</span>, .before <span class='op'>=</span> <span class='va'>rec</span><span class='op'>)</span>
+
+<span class='va'>wr_stats</span> <span class='op'>&lt;-</span> <span class='va'>wr_stats_full</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>'rec'</span><span class='op'>)</span>, <span class='op'>-</span><span class='va'>posteam</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>wr_stats</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code># A tibble: 133 x 6
    air_yards yards_per_target yards_after_catch td_rate outside_rec
        &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
@@ -1513,10 +1554,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <h2 id="svd-from-scratch">SVD from scratch</h2>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>U</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>u</span>
+<span class='va'>D</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>d</span>
+<span class='va'>V</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>v</span>
+
+<span class='va'>DS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>d</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>US</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>U</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>VS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>V</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+
+
+<span class='va'>final</span> <span class='op'>&lt;-</span> <span class='va'>VS</span> <span class='op'>%*%</span> <span class='va'>DS</span> <span class='op'>%*%</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>US</span><span class='op'>)</span>
+
+<span class='va'>pca_data</span> <span class='op'>&lt;-</span> <span class='va'>final</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, <span class='op'>]</span> <span class='op'>%&gt;%</span> <span class='fu'>MASS</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/ginv.html'>ginv</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># Principal components explained variance</span>
+<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>D</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='va'>D</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>D</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>[1] 0.5382788</code></pre>
 </div>
 <p>Using <span class="math inline">\(SVD\)</span> to get the principle components, we can use the largest 2 to explain the ~54% of the variance.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pca_data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>bind_cols</span><span class='op'>(</span><span class='va'>wr_stats_full</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>"rec"</span><span class='op'>)</span>, <span class='va'>posteam</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>V1</span>, <span class='va'>V2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ggrepel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>geom_text_repel</a></span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>receiver</span>, <span class='va'>posteam</span><span class='op'>)</span><span class='op'>)</span>, max.overlaps <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="svd-with-nfl-data_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <p>I want to give thanks to <a href="https://www.youtube.com/watch?v=DG7YTlGnCEo">Luis Serrano</a> who has an excellent explanation of this.</p>
