@@ -28,7 +28,20 @@ This was one of the most facinating concepts to me when I began my graduate prog
 
 I wanted to walk through an example from scratch in R. I'll be using open source NFL data provided by **nflreadr** and the open source developers of **nflverse**. You can check out their work at https://github.com/nflverse.
 
-```{r}
+
+I'll quickly load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in *all shapes and sizes*, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes. 
+
+Data: 
+
+- **rec**: total receptions to filter out players with small sample size
+- **air_yards**: distance the ball traveled in the air before reaching them
+- **yards_per_target**: total yards / targets 
+- **yards_after_catch**: yards after the ball was caught
+- **td_rate**: touchdowns per target
+- **outside_rec**: binary varibale if the receiver caught the ball outside the hashes
+- **dist_from_sticks**: where they were targeted relative to distance needed to continue drive
+
+```{r, include=TRUE}
 library(tidyverse)
 players <- nflreadr::load_player_stats(seasons = c(2014:2020), file_type = 'rds')
 
@@ -63,10 +76,15 @@ wr_stats_full <- wr %>%
   left_join(pbp %>% count(receiver_id, receiver, posteam) %>% group_by(receiver_id) %>% arrange(-n) %>% mutate(rn = row_number()) %>% filter(rn == 1) %>% select(-n, -rn)) %>% 
   relocate(receiver, .before = rec)
 
-wr_stats <- wr_stats_full %>% select(-starts_with('rec'), -posteam)
+wr_stats <- wr_stats_full %>% select(-starts_with('rec'), -posteam) %>% scale()
 
-wr_stats
+wr_stats %>% 
+  as_tibble()
+```
 
+## SVD from scratch
+
+```{r, include=TRUE}
 
 U <- svd(wr_stats)$u
 D <- svd(wr_stats)$d
@@ -81,15 +99,34 @@ final <- VS %*% DS %*% t(US)
 
 pca_data <- final[1:2, ] %>% MASS::ginv()
 
+# Principal components explained variance
+sum(D[[1]], D[[2]])/sum(D)
+
+
+
 ```
 
-```{r}
+Using $SVD$ to get the principle components, we can use the largest 2 to explain the ~54% of the variance. 
+
+```{r, include=TRUE}
 
 pca_data %>% 
   as_tibble() %>% 
   bind_cols(wr_stats_full %>% select(starts_with("rec"), posteam)) %>% 
   ggplot(aes(V1, V2)) +
   geom_point() +
-  ggrepel::geom_text_repel(aes(label = paste(receiver, posteam)), max.overlaps = 10)
+  ggrepel::geom_text_repel(aes(label = paste(receiver, posteam)), max.overlaps = 10) +
+  theme_minimal()
 
 ```
+
+
+I want to give thanks to [Luis Serrano](https://www.youtube.com/watch?v=DG7YTlGnCEo) who has an excellent explanation of this. 
+
+
+
+
+
+
+
+

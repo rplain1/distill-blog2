@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["svd-with-nfl-data_files/anchor-4.2.2/anchor.min.js","svd-with-nfl-data_files/bowser-1.9.3/bowser.min.js","svd-with-nfl-data_files/distill-2.2.21/template.v2.js","svd-with-nfl-data_files/figure-html5/unnamed-chunk-2-1.png","svd-with-nfl-data_files/header-attrs-2.8/header-attrs.js","svd-with-nfl-data_files/jquery-1.11.3/jquery.min.js","svd-with-nfl-data_files/popper-2.6.0/popper.min.js","svd-with-nfl-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","svd-with-nfl-data_files/tippy-6.2.7/tippy-light-border.css","svd-with-nfl-data_files/tippy-6.2.7/tippy.css","svd-with-nfl-data_files/tippy-6.2.7/tippy.umd.min.js","svd-with-nfl-data_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["svd-with-nfl-data_files/anchor-4.2.2/anchor.min.js","svd-with-nfl-data_files/bowser-1.9.3/bowser.min.js","svd-with-nfl-data_files/distill-2.2.21/template.v2.js","svd-with-nfl-data_files/figure-html5/unnamed-chunk-2-1.png","svd-with-nfl-data_files/figure-html5/unnamed-chunk-3-1.png","svd-with-nfl-data_files/header-attrs-2.8/header-attrs.js","svd-with-nfl-data_files/jquery-1.11.3/jquery.min.js","svd-with-nfl-data_files/popper-2.6.0/popper.min.js","svd-with-nfl-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","svd-with-nfl-data_files/tippy-6.2.7/tippy-light-border.css","svd-with-nfl-data_files/tippy-6.2.7/tippy.css","svd-with-nfl-data_files/tippy-6.2.7/tippy.umd.min.js","svd-with-nfl-data_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1484,26 +1484,43 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3 id="dimensionality-reduction">Dimensionality Reduction</h3>
 <p>This was one of the most facinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided.</p>
 <p>I wanted to walk through an example from scratch in R. I’ll be using open source NFL data provided by <strong>nflreadr</strong> and the open source developers of <strong>nflverse</strong>. You can check out their work at <a href="https://github.com/nflverse" class="uri">https://github.com/nflverse</a>.</p>
+<p>I’ll quickly load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in <em>all shapes and sizes</em>, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes.</p>
+<p>Data:</p>
+<ul>
+<li><strong>rec</strong>: total receptions to filter out players with small sample size</li>
+<li><strong>air_yards</strong>: distance the ball traveled in the air before reaching them</li>
+<li><strong>yards_per_target</strong>: total yards / targets</li>
+<li><strong>yards_after_catch</strong>: yards after the ball was caught</li>
+<li><strong>td_rate</strong>: touchdowns per target</li>
+<li><strong>outside_rec</strong>: binary varibale if the receiver caught the ball outside the hashes</li>
+<li><strong>dist_from_sticks</strong>: where they were targeted relative to distance needed to continue drive</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code># A tibble: 133 x 6
    air_yards yards_per_target yards_after_catch td_rate outside_rec
        &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
- 1      8.97             6.28              4.28  0.0159       0.694
- 2      7.00             6.79              4.23  0.0470       0.743
- 3     15.4              8.05              2.56  0.0511       0.806
- 4      5.76             6.17              4.08  0.0211       0.693
- 5      8.71             7.26              4.2   0.025        0.812
- 6      7.60             6.74              4.02  0.0370       0.724
- 7     11.3              7.15              3.43  0.0328       0.791
- 8      9.49             6.93              2.33  0.0388       0.728
- 9     10.5              7.09              3.44  0.0522       0.773
-10      6.89             5.41              3.70  0.01         0.714
+ 1    -0.529          -0.957            -0.0870  -1.43      -1.40  
+ 2    -1.40           -0.446            -0.131    0.197     -0.570 
+ 3     2.28            0.802            -1.72     0.415      0.495 
+ 4    -1.94           -1.07             -0.274   -1.16      -1.42  
+ 5    -0.645           0.0200           -0.160   -0.951      0.588 
+ 6    -1.13           -0.502            -0.332   -0.322     -0.907 
+ 7     0.506          -0.0940           -0.889   -0.544      0.232 
+ 8    -0.303          -0.313            -1.93    -0.228     -0.828 
+ 9     0.126          -0.152            -0.885    0.473     -0.0611
+10    -1.45           -1.82             -0.636   -1.74      -1.06  
 # ... with 123 more rows, and 1 more variable: dist_from_sticks &lt;dbl&gt;</code></pre>
 </div>
+<h2 id="svd-from-scratch">SVD from scratch</h2>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="svd-with-nfl-data_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+<pre><code>[1] 0.5382788</code></pre>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Using <span class="math inline">\(SVD\)</span> to get the principle components, we can use the largest 2 to explain the ~54% of the variance.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="svd-with-nfl-data_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p>I want to give thanks to <a href="https://www.youtube.com/watch?v=DG7YTlGnCEo">Luis Serrano</a> who has an excellent explanation of this.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1511,6 +1528,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
