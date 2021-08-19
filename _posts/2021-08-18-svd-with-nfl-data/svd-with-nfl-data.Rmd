@@ -20,4 +20,73 @@ Distill is a publication format for scientific and technical writing, native to 
 
 Learn more about using Distill at <https://rstudio.github.io/distill>.
 
-test
+# Singular Value Decomposition
+
+### Dimensionality Reduction
+
+This was one of the most facinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided. 
+
+I wanted to walk through an example from scratch in R. I'll be using open source NFL data provided by **nflreadr** and the open source developers of **nflverse**. You can check out their work at https://github.com/nflverse.
+
+```{r}
+
+players <- nflreadr::load_player_stats(seasons = c(2014:2020), file_type = 'rds')
+
+rosters <- nflreadr::load_rosters(c(2014:2020))
+
+pbp_roster <- pbp %>% 
+  left_join(rosters %>% 
+              select(position, season, gsis_id), by = c('fantasy_id' = 'gsis_id', 'season'))
+  
+
+wr <- pbp_roster %>% 
+  filter(position == 'WR') 
+  
+wr_stats_full <- wr %>% 
+  mutate(outside_pass = ifelse(pass_location != 'middle', 1, 0),
+         pass_air_yards = ifelse(is.na(air_yards), 0, air_yards),
+         pass_air_yards = ifelse(ydstogo <= 10, pass_air_yards, NA)) %>% 
+  group_by(receiver_id) %>% 
+  summarise(
+    rec = sum(complete_pass),
+    air_yards = mean(pass_air_yards, na.rm = T),
+    yards_per_target = mean(yards_gained, na.rm = T),
+    yards_after_catch = mean(yards_after_catch, na.rm = T),
+    td_rate = mean(pass_touchdown),
+    outside_rec = mean(outside_pass, na.rm = T),
+    dist_from_sticks = mean(pass_air_yards - ydstogo, na.rm = T)
+  ) %>% 
+  filter(rec > 50) %>% 
+  left_join(pbp %>% count(receiver_id, receiver, posteam) %>% group_by(receiver_id) %>% arrange(-n) %>% mutate(rn = row_number()) %>% filter(rn == 1) %>% select(-n, -rn)) %>% 
+  relocate(receiver, .before = rec)
+
+wr_stats <- wr_stats_full %>% select(-starts_with('rec'), -posteam)
+
+wr_stats
+
+
+U <- svd(wr_stats)$u
+D <- svd(wr_stats)$d
+V <- svd(wr_stats)$v
+
+DS <- diag(1/svd(wr_stats)$d[1:2])
+US <- as.matrix(U[,1:2])
+VS <- as.matrix(V[,1:2])
+
+
+final <- VS %*% DS %*% t(US)
+
+pca_data <- final[1:2, ] %>% MASS::ginv()
+
+```
+
+```{r}
+
+pca_data %>% 
+  as_tibble() %>% 
+  bind_cols(wr_stats_full %>% select(starts_with("rec"), posteam)) %>% 
+  ggplot(aes(V1, V2)) +
+  geom_point() +
+  ggrepel::geom_text_repel(aes(label = paste(receiver, posteam)), max.overlaps = 10)
+
+```
