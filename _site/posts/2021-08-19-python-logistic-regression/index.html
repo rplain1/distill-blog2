@@ -86,38 +86,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Plain Data: PCA with NFL Data</title>
+<title>Plain Data: Python Logistic Regression</title>
 
-<meta property="description" itemprop="description" content="Utilizing SVD to do a Principal Component Analysis"/>
+<meta property="description" itemprop="description" content="A short description of the post."/>
 
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2021-08-18"/>
-<meta property="article:created" itemprop="dateCreated" content="2021-08-18"/>
+<meta property="article:published" itemprop="datePublished" content="2021-08-19"/>
+<meta property="article:created" itemprop="dateCreated" content="2021-08-19"/>
 <meta name="article:author" content="Ryan Plain"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Plain Data: PCA with NFL Data"/>
+<meta property="og:title" content="Plain Data: Python Logistic Regression"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Utilizing SVD to do a Principal Component Analysis"/>
+<meta property="og:description" content="A short description of the post."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Plain Data"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Plain Data: PCA with NFL Data"/>
-<meta property="twitter:description" content="Utilizing SVD to do a Principal Component Analysis"/>
+<meta property="twitter:title" content="Plain Data: Python Logistic Regression"/>
+<meta property="twitter:description" content="A short description of the post."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["PCA with NFL Data"]},{"type":"character","attributes":{},"value":["Utilizing SVD to do a Principal Component Analysis"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ryan Plain"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["08-18-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Python Logistic Regression"]},{"type":"character","attributes":{},"value":["A short description of the post."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ryan Plain"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["08-19-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["svd-with-nfl-data_files/anchor-4.2.2/anchor.min.js","svd-with-nfl-data_files/bowser-1.9.3/bowser.min.js","svd-with-nfl-data_files/distill-2.2.21/template.v2.js","svd-with-nfl-data_files/figure-html5/unnamed-chunk-2-1.png","svd-with-nfl-data_files/figure-html5/unnamed-chunk-3-1.png","svd-with-nfl-data_files/header-attrs-2.8/header-attrs.js","svd-with-nfl-data_files/jquery-1.11.3/jquery.min.js","svd-with-nfl-data_files/popper-2.6.0/popper.min.js","svd-with-nfl-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","svd-with-nfl-data_files/tippy-6.2.7/tippy-light-border.css","svd-with-nfl-data_files/tippy-6.2.7/tippy.css","svd-with-nfl-data_files/tippy-6.2.7/tippy.umd.min.js","svd-with-nfl-data_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["python-logistic-regression_files/anchor-4.2.2/anchor.min.js","python-logistic-regression_files/bowser-1.9.3/bowser.min.js","python-logistic-regression_files/distill-2.2.21/template.v2.js","python-logistic-regression_files/header-attrs-2.8/header-attrs.js","python-logistic-regression_files/jquery-1.11.3/jquery.min.js","python-logistic-regression_files/popper-2.6.0/popper.min.js","python-logistic-regression_files/tippy-6.2.7/tippy-bundle.umd.min.js","python-logistic-regression_files/tippy-6.2.7/tippy-light-border.css","python-logistic-regression_files/tippy-6.2.7/tippy.css","python-logistic-regression_files/tippy-6.2.7/tippy.umd.min.js","python-logistic-regression_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2062,7 +2062,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"PCA with NFL Data","description":"Utilizing SVD to do a Principal Component Analysis","authors":[{"author":"Ryan Plain","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-08-18T00:00:00.000-05:00","citationText":"Plain, 2021"}
+{"title":"Python Logistic Regression","description":"A short description of the post.","authors":[{"author":"Ryan Plain","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-08-19T00:00:00.000-05:00","citationText":"Plain, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2085,132 +2085,228 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>PCA with NFL Data</h1>
+<h1>Python Logistic Regression</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Utilizing SVD to do a Principal Component Analysis</p></p>
+<p><p>A short description of the post.</p></p>
 </div>
 
 <div class="d-byline">
   Ryan Plain true 
   
-<br/>08-18-2021
+<br/>08-19-2021
 </div>
 
 <div class="d-article">
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<h1 id="singular-value-decomposition">Singular Value Decomposition</h1>
-<h3 id="dimensionality-reduction">Dimensionality Reduction</h3>
-<p>This was one of the most facinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided.</p>
-<p>I wanted to walk through an example from scratch in R. I’ll be using open source NFL data provided by <strong>nflreadr</strong> and the open source developers of <strong>nflverse</strong>. You can check out their work at <a href="https://github.com/nflverse" class="uri">https://github.com/nflverse</a>.</p>
-<p>I’ll quickly load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in <em>all shapes and sizes</em>, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes.</p>
-<p>Data:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/reticulate'>reticulate</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="logistic-regression">Logistic Regression</h1>
+<h3 id="section">2 + 2 = 5</h3>
+<blockquote>
+<p>“R and Python are like my right and left hand. I can do everything in both, but one is clumsier than the other.” -<a href="https://twitter.com/PhDemetri">Demitri</a></p>
+</blockquote>
+<p>I was listening to the <a href="https://www.learnbayesstats.com/">Learn Bayes Stats</a> podcast with Alex Andorra and guest Demitri, and heard this line. I loved it. You hear all the time about, “Which should I learn for Data Science, R or Python?” This is usually followed up by regurgitated answers:</p>
 <ul>
-<li><strong>rec</strong>: total receptions to filter out players with small sample size</li>
-<li><strong>air_yards</strong>: distance the ball traveled in the air before reaching them</li>
-<li><strong>yards_per_target</strong>: total yards / targets</li>
-<li><strong>yards_after_catch</strong>: yards after the ball was caught</li>
-<li><strong>td_rate</strong>: touchdowns per target</li>
-<li><strong>outside_rec</strong>: binary varibale if the receiver caught the ball outside the hashes</li>
-<li><strong>dist_from_sticks</strong>: where they were targeted relative to distance needed to continue drive</li>
+<li>Python if you have a computer science background, R if you come from statistics.</li>
+<li>R users bashing on anything other than R (primarily because software engineers have created an ecosystem where you never have to leave this beautiful language)</li>
+<li>Python because it is so versatile (another favorite quote from the podcast is that Python is the 2nd best language at everything).</li>
 </ul>
+<p><em>Occasionally</em> you’ll hear, learn both. This should always be the answer in my opinion.</p>
+<p>I first learned Python, primarily because I was graduating with a Business Analytics degree that had us using drag and drop neural networks without learning anything more than a hidden layer. I quickly realized this didn’t set me up for much of anything, probably should have stuck with the less trendy Economics degree.</p>
+<p>Python was indeed more versatile, and at this point I just needed to land any job in the realms of IT. I will say that if I had to go back, I would learn Python again first and then R. This is just due to the fact that solidifying computer science concepts is a foundation of how I use R today. Since I primarily work with data, 80% of my time wrangling or cleaning, I use R. If you prefer to clean and work with data in Python, I salute you.</p>
+<p>There are tasks that each language is better suited for, knowing both allows a synergy effect. Whether it is with your colleagues, being versatile in the work you can do, or with yourself. Allowing you to leverage the strengths of both languages to become the best version of a data scientist you can be.</p>
+<p><strong>OR</strong> it is because the underlying concepts transfer over to all problems, and deep down it is really just the syntax or interface to the solution. For all I know, <a href="https://julialang.org/">Julia</a> could take over as the number 1 language for data science by the time I finish this series of posts.</p>
+<p>Maybe I should be using that already…</p>
+<h3 id="the-series">The series</h3>
+<p>I’ll be doing a series of modeling, in both languages, as I hope to grasp as much of the concepts as possible. Currently, I’m working through the second edition of <a href="https://www.statlearning.com/">Introduction to Statistical Learning <em>Second Edition</em></a> and plan to implement models as I read through it.</p>
+<p>I’m pretty sure I am speaking into the abyss here, but it is a way to keep me accountable!</p>
+<h3 id="the-content">The Content</h3>
+<p>This is just a quick Logistic Regression model implemented in both languages. I tried to do a model with NFL data, like most of my blogs. However, it turned out to be quite tedious setting up the data, and I ended up scrapping it down to something I knew would pass. I’m fairly comfortable running standard linear regression as well as logistic, so this is just something to get up on the board and move into deeper topics.</p>
+<h3 id="the-data">The Data</h3>
+<p>Load in 2020 play by play data from <strong>nflreadr</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pbp</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_pbp.html'>load_pbp</a></span><span class='op'>(</span><span class='fl'>2020</span>, file_type <span class='op'>=</span> <span class='st'>'rds'</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>I did a basic summary of each game, the teams, winner, and expected points added stats. For a detailed description on EPA, you can find at <a href="https://www.nfl.com/news/next-gen-stats-new-advanced-metrics-you-need-to-know-for-the-2020-nfl-season">NFL.com</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='va'>players</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_player_stats.html'>load_player_stats</a></span><span class='op'>(</span>seasons <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2020</span><span class='op'>)</span>, file_type <span class='op'>=</span> <span class='st'>'rds'</span><span class='op'>)</span>
 
-<span class='va'>rosters</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_rosters.html'>load_rosters</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2020</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>pbp</span> <span class='op'>&lt;-</span> <span class='fu'>nflreadr</span><span class='fu'>::</span><span class='fu'><a href='nflreadr.nflverse.com/reference/load_pbp.html'>load_pbp</a></span><span class='op'>(</span><span class='fl'>2014</span><span class='op'>:</span><span class='fl'>2020</span>, file_type <span class='op'>=</span> <span class='st'>'rds'</span><span class='op'>)</span>
-
-
-<span class='va'>pbp_roster</span> <span class='op'>&lt;-</span> <span class='va'>pbp</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>rosters</span> <span class='op'>%&gt;%</span> 
-              <span class='fu'>select</span><span class='op'>(</span><span class='va'>position</span>, <span class='va'>season</span>, <span class='va'>gsis_id</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'fantasy_id'</span> <span class='op'>=</span> <span class='st'>'gsis_id'</span>, <span class='st'>'season'</span><span class='op'>)</span><span class='op'>)</span>
-  
-
-<span class='va'>wr</span> <span class='op'>&lt;-</span> <span class='va'>pbp_roster</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>position</span> <span class='op'>==</span> <span class='st'>'WR'</span><span class='op'>)</span> 
-  
-<span class='va'>wr_stats_full</span> <span class='op'>&lt;-</span> <span class='va'>wr</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>outside_pass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>pass_location</span> <span class='op'>!=</span> <span class='st'>'middle'</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>,
-         pass_air_yards <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>air_yards</span><span class='op'>)</span>, <span class='fl'>0</span>, <span class='va'>air_yards</span><span class='op'>)</span>,
-         pass_air_yards <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>ydstogo</span> <span class='op'>&lt;=</span> <span class='fl'>10</span>, <span class='va'>pass_air_yards</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>receiver_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>summarise</span><span class='op'>(</span>
-    rec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>complete_pass</span><span class='op'>)</span>,
-    air_yards <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pass_air_yards</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
-    yards_per_target <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>yards_gained</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
-    yards_after_catch <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>yards_after_catch</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
-    td_rate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pass_touchdown</span><span class='op'>)</span>,
-    outside_rec <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>outside_pass</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
-    dist_from_sticks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pass_air_yards</span> <span class='op'>-</span> <span class='va'>ydstogo</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<span class='va'>pbp</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>home_team</span>, <span class='va'>away_team</span>, <span class='va'>game_date</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    home_off_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>posteam</span> <span class='op'>==</span> <span class='va'>home_team</span> <span class='op'>&amp;</span> <span class='va'>play</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='va'>epa</span>, <span class='cn'>NA</span><span class='op'>)</span>,
+    away_off_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>posteam</span> <span class='op'>==</span> <span class='va'>away_team</span> <span class='op'>&amp;</span> <span class='va'>play</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='va'>epa</span>, <span class='cn'>NA</span><span class='op'>)</span>,
+    home_def_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>defteam</span> <span class='op'>==</span> <span class='va'>home_team</span> <span class='op'>&amp;</span> <span class='va'>play</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='va'>epa</span>, <span class='cn'>NA</span><span class='op'>)</span>,
+    away_def_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>defteam</span> <span class='op'>==</span> <span class='va'>away_team</span> <span class='op'>&amp;</span> <span class='va'>play</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='va'>epa</span>, <span class='cn'>NA</span><span class='op'>)</span>
   <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>rec</span> <span class='op'>&gt;</span> <span class='fl'>50</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>pbp</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>receiver_id</span>, <span class='va'>receiver</span>, <span class='va'>posteam</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>receiver_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>rn <span class='op'>=</span> <span class='fu'>row_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>rn</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span>, <span class='op'>-</span><span class='va'>rn</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>relocate</span><span class='op'>(</span><span class='va'>receiver</span>, .before <span class='op'>=</span> <span class='va'>rec</span><span class='op'>)</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>
+    home_score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>total_home_score</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    away_score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>total_away_score</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    home_off_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>home_off_epa</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    away_off_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>away_off_epa</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    home_def_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>home_def_epa</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    away_def_epa <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>away_def_epa</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>,
+    .groups <span class='op'>=</span> <span class='st'>'drop'</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span>
+    <span class='va'>home_score</span> <span class='op'>&gt;</span> <span class='va'>away_score</span> <span class='op'>~</span> <span class='st'>'home'</span>,
+    <span class='va'>away_score</span> <span class='op'>&gt;</span> <span class='va'>home_score</span> <span class='op'>~</span> <span class='st'>'away'</span>,
+    <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='st'>'Tie'</span>
+  <span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>games</span>
 
-<span class='va'>wr_stats</span> <span class='op'>&lt;-</span> <span class='va'>wr_stats_full</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>'rec'</span><span class='op'>)</span>, <span class='op'>-</span><span class='va'>posteam</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>games</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>outcome</span> <span class='op'>!=</span> <span class='st'>'Tie'</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='va'>outcome</span> <span class='op'>==</span> <span class='st'>'home'</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rename_with</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>str_replace</span><span class='op'>(</span><span class='va'>.</span>, <span class='st'>"home"</span>, <span class='st'>"team"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rename_with</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>str_replace</span><span class='op'>(</span><span class='va'>.</span>, <span class='st'>"away"</span>, <span class='st'>"opp"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>home_teams</span>
 
-<span class='va'>wr_stats</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='va'>games</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>outcome</span> <span class='op'>!=</span> <span class='st'>'Tie'</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='va'>outcome</span> <span class='op'>==</span> <span class='st'>'home'</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rename_with</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>str_replace</span><span class='op'>(</span><span class='va'>.</span>, <span class='st'>"away"</span>, <span class='st'>"team"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rename_with</span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>str_replace</span><span class='op'>(</span><span class='va'>.</span>, <span class='st'>"home"</span>, <span class='st'>"opp"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='va'>outcome</span> <span class='op'>==</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>away_teams</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 133 x 6
-   air_yards yards_per_target yards_after_catch td_rate outside_rec
-       &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
- 1    -0.529          -0.957            -0.0870  -1.43      -1.40  
- 2    -1.40           -0.446            -0.131    0.197     -0.570 
- 3     2.28            0.802            -1.72     0.415      0.495 
- 4    -1.94           -1.07             -0.274   -1.16      -1.42  
- 5    -0.645           0.0200           -0.160   -0.951      0.588 
- 6    -1.13           -0.502            -0.332   -0.322     -0.907 
- 7     0.506          -0.0940           -0.889   -0.544      0.232 
- 8    -0.303          -0.313            -1.93    -0.228     -0.828 
- 9     0.126          -0.152            -0.885    0.473     -0.0611
-10    -1.45           -1.82             -0.636   -1.74      -1.06  
-# ... with 123 more rows, and 1 more variable: dist_from_sticks &lt;dbl&gt;</code></pre>
 </div>
-<h2 id="pca-from-scratch">PCA from scratch</h2>
+<p>Ultimately, I ended up having tho remove the defense epa so it is just each teams offensive epa <em>in game</em>. Completely useless! However, it is data and I can run the models. Better luck next time.</p>
+<h3 id="the-r-model">The R Model</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>U</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>u</span>
-<span class='va'>D</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>d</span>
-<span class='va'>V</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>v</span>
-
-<span class='va'>DS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>d</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
-<span class='va'>US</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>U</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
-<span class='va'>VS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>V</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>bind_rows</span><span class='op'>(</span><span class='va'>home_teams</span>, <span class='va'>away_teams</span><span class='op'>)</span>
 
 
-<span class='va'>final</span> <span class='op'>&lt;-</span> <span class='va'>VS</span> <span class='op'>%*%</span> <span class='va'>DS</span> <span class='op'>%*%</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>US</span><span class='op'>)</span>
+<span class='va'>df</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='fu'>contains</span><span class='op'>(</span><span class='st'>'off'</span><span class='op'>)</span>, <span class='va'>outcome</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>outcome <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>outcome</span> <span class='op'>==</span> <span class='cn'>TRUE</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>glm_data</span>
 
-<span class='va'>pca_data</span> <span class='op'>&lt;-</span> <span class='va'>final</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, <span class='op'>]</span> <span class='op'>%&gt;%</span> <span class='fu'>MASS</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/ginv.html'>ginv</a></span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='co'># Principal components explained variance</span>
-<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>D</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='va'>D</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>D</span><span class='op'>)</span>
+<span class='va'>mylogit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>outcome</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>glm_data</span>, family <span class='op'>=</span> <span class='st'>'binomial'</span><span class='op'>)</span>
+
+<span class='va'>glm_data</span><span class='op'>$</span><span class='va'>pred</span> <span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>mylogit</span>, newdata <span class='op'>=</span> <span class='va'>glm_data</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>outcome</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>glm_data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>pred <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='va'>pred</span><span class='op'>)</span><span class='op'>/</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='va'>pred</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>pred <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>pred</span> <span class='op'>&gt;=</span> <span class='fl'>.5</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>outcome</span> <span class='op'>==</span> <span class='va'>pred</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>acc <span class='op'>=</span> <span class='va'>n</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.5382788</code></pre>
-</div>
-<p>Using <span class="math inline">\(SVD\)</span> to get the principal components, we can use the largest 2 to explain the ~54% of the variance. This allows for a 2 dimensional scatter plot to analyze players. Both Deebo Samuel (SF) and AJ Brown (TEN) stick out from the chart. Samuel gets used almost as a running back in his system, and AJ Brown is a deep vertical threat that also excels with yards after the catch.</p>
-<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 2 x 3
+  `outcome == pred`     n    acc
+  &lt;lgl&gt;             &lt;int&gt;  &lt;dbl&gt;
+1 FALSE                48 0.0896
+2 TRUE                488 0.910 </code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pca_data</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>bind_cols</span><span class='op'>(</span><span class='va'>wr_stats_full</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>"rec"</span><span class='op'>)</span>, <span class='va'>posteam</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>V1</span>, <span class='va'>V2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggrepel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>geom_text_repel</a></span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>receiver</span>, <span class='va'>posteam</span><span class='op'>)</span><span class='op'>)</span>, max.overlaps <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>reticulate</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/reticulate/man/r-py-conversion.html'>r_to_py</a></span><span class='op'>(</span><span class='va'>glm_data</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="svd-with-nfl-data_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
-<p>Further, I would like to continue this post by using the 2018 player tracking data available through the NFL Big Data Bowl, to create more dimensions than play by play data allows for. For instance, with player tracking data you have all the information if a player was on the field. You can then look at percentage of time they were utilized in the endzone, yards of separation at target, distance traveled in route, etc.</p>
-<p>I want to give thanks to <a href="https://www.youtube.com/watch?v=DG7YTlGnCEo">Luis Serrano</a> who has an excellent explanation of this.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h3 id="the-python-model">The Python Model</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&#39;ignore&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, plot_confusion_matrix</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, KFold, LeaveOneOut</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, cross_val_predict</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> r.data.drop([<span class="st">&#39;pred&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">&#39;outcome&#39;</span>] <span class="op">=</span> data[<span class="st">&#39;outcome&#39;</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code></pre></div>
+<pre><code>   team_off_epa  opp_off_epa  outcome
+0      0.032669    -0.015374        1
+1     -0.002194     0.042183        0
+2     -0.122382     0.184250        0
+3      0.175921     0.200345        0
+4     -0.015293     0.049084        1</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [<span class="st">&#39;team_off_epa&#39;</span>, <span class="st">&#39;opp_off_epa&#39;</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data[predictors], data[<span class="st">&#39;outcome&#39;</span>], test_size <span class="op">=</span> <span class="fl">0.2</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>zscore <span class="op">=</span> StandardScaler()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>zscore.fit(X_train)</span></code></pre></div>
+<pre><code>StandardScaler()</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Xz_train <span class="op">=</span> zscore.transform(X_train)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Xz_test <span class="op">=</span> zscore.transform(X_test)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>myLogit <span class="op">=</span> LogisticRegression()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>myLogit.fit(Xz_train, y_train)</span></code></pre></div>
+<pre><code>LogisticRegression()</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>predictedVals <span class="op">=</span> myLogit.predict(Xz_test)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, predictedVals)</span></code></pre></div>
+<pre><code>0.9444444444444444</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>confusion_matrix(y_test, predictedVals)</span></code></pre></div>
+<pre><code>array([[56,  3],
+       [ 3, 46]], dtype=int64)</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[predictors]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">&#39;outcome&#39;</span>]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>kf <span class="op">=</span> KFold(n_splits <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LogisticRegression()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> []</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> train_indicies, test_indicies <span class="kw">in</span> kf.split(X):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  X_train <span class="op">=</span> X.iloc[train_indicies]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  X_test <span class="op">=</span> X.iloc[test_indicies]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  y_train <span class="op">=</span> y[train_indicies]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  y_test <span class="op">=</span> y[test_indicies]</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  z <span class="op">=</span> StandardScaler()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  z.fit(X_train)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  Xz_train <span class="op">=</span> zscore.transform(X_train)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  Xz_test <span class="op">=</span> z.transform(X_test)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  model <span class="op">=</span> lr.fit(Xz_train, y_train)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  acc.append(accuracy_score(y_test, model.predict(Xz_test)))</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
+<pre><code>StandardScaler()
+StandardScaler()
+StandardScaler()
+StandardScaler()
+StandardScaler()</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(acc)</span></code></pre></div>
+<pre><code>[0.9259259259259259, 0.8411214953271028, 0.9532710280373832, 0.897196261682243, 0.8411214953271028]</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(acc))</span></code></pre></div>
+<pre><code>0.8917272412599516</code></pre>
+</div>
+<p>That’s it! Either a better logistic model next time, Tidymodels, or the next chapter in ISLR2.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2218,15 +2314,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="d-appendix">
 </div>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

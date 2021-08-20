@@ -1,0 +1,241 @@
+---
+title: "Python Logistic Regression"
+description: |
+  A short description of the post.
+author:
+  - name: Ryan Plain
+    url: {}
+date: 08-19-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(reticulate)
+
+```
+
+
+# Logistic Regression
+
+### 2 + 2 = 5
+
+> "R and Python are like my right and left hand. I can do everything in both, but one is clumsier than the other." -[Demitri](https://twitter.com/PhDemetri)
+
+I was listening to the [Learn Bayes Stats](https://www.learnbayesstats.com/) podcast with Alex Andorra and guest Demitri, and heard this line. I loved it. You hear all the time about, "Which should I learn for Data Science, R or Python?" This is usually followed up by regurgitated answers: 
+
+- Python if you have a computer science background, R if you come from statistics. 
+- R users bashing on anything other than R (primarily because software engineers have created an ecosystem where you never have to leave this beautiful language)
+- Python because it is so versatile (another favorite quote from the podcast is that Python is the 2nd best language at everything). 
+
+*Occasionally* you'll hear, learn both. This should always be the answer in my opinion. 
+
+I first learned Python, primarily because I was graduating with a Business Analytics degree that had us using drag and drop neural networks without learning anything more than a hidden layer. I quickly realized this didn't set me up for much of anything, probably should have stuck with the less trendy Economics degree. 
+
+Python was indeed more versatile, and at this point I just needed to land any job in the realms of IT. I will say that if I had to go back, I would learn Python again first and then R. This is just due to the fact that solidifying computer science concepts is a foundation of how I use R today. Since I primarily work with data, 80% of my time wrangling or cleaning, I use R. If you prefer to clean and work with data in Python, I salute you.
+
+There are tasks that each language is better suited for, knowing both allows a synergy effect. Whether it is with your colleagues, being versatile in the work you can do, or with yourself. Allowing you to leverage the strengths of both languages to become the best version of a data scientist you can be. 
+
+**OR** it is because the underlying concepts transfer over to all problems, and deep down it is really just the syntax or interface to the solution. For all I know, [Julia](https://julialang.org/) could take over as the number 1 language for data science by the time I finish this series of posts. 
+
+Maybe I should be using that already...
+
+### The series
+
+I'll be doing a series of modeling, in both languages, as I hope to grasp as much of the concepts as possible. Currently, I'm working through the second edition of [Introduction to Statistical Learning *Second Edition*](https://www.statlearning.com/) and plan to implement models as I read through it. 
+
+I'm pretty sure I am speaking into the abyss here, but it is a way to keep me accountable!
+
+
+### The Content
+
+This is just a quick Logistic Regression model implemented in both languages. I tried to do a model with NFL data, like most of my blogs. However, it turned out to be quite tedious setting up the data, and I ended up scrapping it down to something I knew would pass. I'm fairly comfortable running standard linear regression as well as logistic, so this is just something to get up on the board and move into deeper topics. 
+
+
+### The Data
+
+Load in 2020 play by play data from **nflreadr**.
+
+```{r}
+pbp <- nflreadr::load_pbp(2020, file_type = 'rds')
+```
+
+I did a basic summary of each game, the teams, winner, and expected points added stats. For a detailed description on EPA, you can find at [NFL.com](https://www.nfl.com/news/next-gen-stats-new-advanced-metrics-you-need-to-know-for-the-2020-nfl-season).
+
+```{r}
+library(tidyverse)
+
+pbp %>% 
+  group_by(home_team, away_team, game_date) %>% 
+  mutate(
+    home_off_epa = ifelse(posteam == home_team & play == 1, epa, NA),
+    away_off_epa = ifelse(posteam == away_team & play == 1, epa, NA),
+    home_def_epa = ifelse(defteam == home_team & play == 1, epa, NA),
+    away_def_epa = ifelse(defteam == away_team & play == 1, epa, NA)
+  ) %>% 
+  summarise(
+    home_score = max(total_home_score, na.rm = T),
+    away_score = max(total_away_score, na.rm = T),
+    home_off_epa = mean(home_off_epa, na.rm = T),
+    away_off_epa = mean(away_off_epa, na.rm = T),
+    home_def_epa = mean(home_def_epa, na.rm = T),
+    away_def_epa = mean(away_def_epa, na.rm = T),
+    .groups = 'drop'
+  ) %>% 
+  mutate(outcome = case_when(
+    home_score > away_score ~ 'home',
+    away_score > home_score ~ 'away',
+    TRUE ~ 'Tie'
+  )) -> games
+
+games %>% 
+  filter(outcome != 'Tie') %>% 
+  mutate(outcome = outcome == 'home') %>% 
+  rename_with(~ str_replace(., "home", "team")) %>% 
+  rename_with(~ str_replace(., "away", "opp")) -> home_teams
+
+
+games %>% 
+  filter(outcome != 'Tie') %>% 
+  mutate(outcome = outcome == 'home') %>% 
+  rename_with(~ str_replace(., "away", "team")) %>% 
+  rename_with(~ str_replace(., "home", "opp")) %>% 
+  mutate(outcome = outcome == FALSE) -> away_teams
+
+```
+
+Ultimately, I ended up having tho remove the defense epa so it is just each teams offensive epa *in game*. Completely useless! However, it is data and I can run the models. Better luck next time. 
+
+
+### The R Model
+
+```{r}
+df <- bind_rows(home_teams, away_teams)
+
+
+df %>% 
+  select(contains('off'), outcome) %>% 
+  mutate(outcome = ifelse(outcome == TRUE, 1, 0)) -> glm_data
+
+
+mylogit <- glm(outcome ~ ., data = glm_data, family = 'binomial')
+
+glm_data$pred <-predict(mylogit, newdata = glm_data %>% select(-outcome))
+
+glm_data %>% 
+  mutate(pred = exp(pred)/(1+exp(pred))) %>% 
+  mutate(pred = ifelse(pred >= .5, 1, 0)) %>% 
+  count(outcome == pred) %>% 
+  mutate(acc = n / sum(n))
+
+
+data <- reticulate::r_to_py(glm_data)
+```
+
+### The Python Model
+
+```{python}
+import warnings
+warnings.filterwarnings('ignore')
+
+import pandas as pd
+import numpy as np
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix, plot_confusion_matrix
+
+from sklearn.model_selection import train_test_split, KFold, LeaveOneOut
+from sklearn.model_selection import cross_val_score, cross_val_predict
+from sklearn.datasets import load_diabetes
+
+```
+
+```{python}
+
+data = r.data.drop(['pred'], axis=1)
+data['outcome'] = data['outcome'].astype(int)
+print(data.head())
+```
+
+
+```{python}
+
+predictors = ['team_off_epa', 'opp_off_epa']
+
+X_train, X_test, y_train, y_test = train_test_split(data[predictors], data['outcome'], test_size = 0.2)
+
+zscore = StandardScaler()
+zscore.fit(X_train)
+
+Xz_train = zscore.transform(X_train)
+Xz_test = zscore.transform(X_test)
+```
+
+
+```{python}
+myLogit = LogisticRegression()
+
+myLogit.fit(Xz_train, y_train)
+
+predictedVals = myLogit.predict(Xz_test)
+```
+
+```{python}
+accuracy_score(y_test, predictedVals)
+```
+
+```{python}
+confusion_matrix(y_test, predictedVals)
+```
+
+
+```{python}
+X = data[predictors]
+y = data['outcome']
+
+kf = KFold(n_splits = 5)
+lr = LogisticRegression()
+
+acc = []
+```
+
+```{python}
+
+for train_indicies, test_indicies in kf.split(X):
+  
+  X_train = X.iloc[train_indicies]
+  X_test = X.iloc[test_indicies]
+  y_train = y[train_indicies]
+  y_test = y[test_indicies]
+  
+  z = StandardScaler()
+  z.fit(X_train)
+  
+  Xz_train = zscore.transform(X_train)
+  Xz_test = z.transform(X_test)
+  
+  model = lr.fit(Xz_train, y_train)
+  acc.append(accuracy_score(y_test, model.predict(Xz_test)))
+  
+  
+print(acc)
+print(np.mean(acc))
+```
+
+That's it! Either a better logistic model next time, Tidymodels, or the next chapter in ISLR2.  
+
+
+
+
+
+
+
+
+

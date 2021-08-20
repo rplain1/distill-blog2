@@ -1,7 +1,7 @@
 ---
-title: "SVD with NFL Data"
+title: "PCA with NFL Data"
 description: |
-  A short description of the post.
+  Utilizing SVD to do a Principal Component Analysis
 author:
   - name: Ryan Plain
     url: {}
@@ -82,7 +82,7 @@ wr_stats %>%
   as_tibble()
 ```
 
-## SVD from scratch
+## PCA from scratch
 
 ```{r, include=TRUE}
 
@@ -106,7 +106,7 @@ sum(D[[1]], D[[2]])/sum(D)
 
 ```
 
-Using $SVD$ to get the principle components, we can use the largest 2 to explain the ~54% of the variance. 
+Using $SVD$ to get the principal components, we can use the largest 2 to explain the ~54% of the variance. This allows for a 2 dimensional scatter plot to analyze players. Both Deebo Samuel (SF) and AJ Brown (TEN) stick out from the chart. Samuel gets used almost as a running back in his system, and AJ Brown is a deep vertical threat that also excels with yards after the catch.  
 
 ```{r, include=TRUE}
 
@@ -120,6 +120,7 @@ pca_data %>%
 
 ```
 
+Further, I would like to continue this post by using the 2018 player tracking data available through the NFL Big Data Bowl, to create more dimensions than play by play data allows for. For instance, with player tracking data you have all the information if a player was on the field. You can then look at percentage of time they were utilized in the endzone, yards of separation at target, distance traveled in route, etc. 
 
 I want to give thanks to [Luis Serrano](https://www.youtube.com/watch?v=DG7YTlGnCEo) who has an excellent explanation of this. 
 
