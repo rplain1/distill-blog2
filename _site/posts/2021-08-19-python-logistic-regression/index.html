@@ -2126,6 +2126,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>I’m pretty sure I am speaking into the abyss here, but it is a way to keep me accountable!</p>
 <h3 id="the-content">The Content</h3>
 <p>This is just a quick Logistic Regression model implemented in both languages. I tried to do a model with NFL data, like most of my blogs. However, it turned out to be quite tedious setting up the data, and I ended up scrapping it down to something I knew would pass. I’m fairly comfortable running standard linear regression as well as logistic, so this is just something to get up on the board and move into deeper topics.</p>
+<p>Ultimately, I would like to manufacture a dataset I can dive deeper on assumptions, or feature engineering. The <strong>LAST</strong> thing I want is to show exporting sklearn and running a Logistic Regression. As I’ve learned from so many people smarter than me, the dangers of ML come with applying algorithms without thinking about the data. How is it collected? What kind of interpretability does this analysis require?</p>
+<p>Anyone can import the library and run the model, Data Science is much more than that.</p>
 <h3 id="the-data">The Data</h3>
 <p>Load in 2020 play by play data from <strong>nflreadr</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2212,6 +2214,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </div>
 <h3 id="the-python-model">The Python Model</h3>
+<p>By default, sklearn already imposes a regularization penalty. I’ll be diving more into that in a later post.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&#39;ignore&#39;</span>)</span>
@@ -2227,6 +2230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score, cross_val_predict</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span></code></pre></div>
 </div>
+<p>The same data, without the R predictions.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> r.data.drop([<span class="st">&#39;pred&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -2251,6 +2255,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Xz_train <span class="op">=</span> zscore.transform(X_train)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Xz_test <span class="op">=</span> zscore.transform(X_test)</span></code></pre></div>
 </div>
+<p>I actually much prefer the API for sklearn. Python and the OOP framework is easier for me to understand how the logic is applied. R, Tidyverse, and Tidymodels are simple to use, but a lot of times it is difficult for me to debug complex problems because of how much of the technical implementation is abstracted away.</p>
+<p>That is also why it is the elite tool for EDA!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>myLogit <span class="op">=</span> LogisticRegression()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2260,13 +2266,15 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>accuracy_score(y_test, predictedVals)</span></code></pre></div>
-<pre><code>0.8981481481481481</code></pre>
+<pre><code>0.9259259259259259</code></pre>
 </div>
+<p>Hmm, can’t get this to plot in Rmarkdown…</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>confusion_matrix(y_test, predictedVals)</span></code></pre></div>
-<pre><code>array([[50,  8],
-       [ 3, 47]], dtype=int64)</code></pre>
+<pre><code>array([[47,  4],
+       [ 4, 53]], dtype=int64)</code></pre>
 </div>
+<h5 id="cross-validation">Cross Validation</h5>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[predictors]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">&#39;outcome&#39;</span>]</span>
@@ -2301,12 +2309,86 @@ StandardScaler()
 StandardScaler()
 StandardScaler()</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(acc)</span></code></pre></div>
-<pre><code>[0.9074074074074074, 0.822429906542056, 0.9626168224299065, 0.9065420560747663, 0.8691588785046729]</code></pre>
+<pre><code>[0.9166666666666666, 0.8317757009345794, 0.9626168224299065, 0.897196261682243, 0.8691588785046729]</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(acc))</span></code></pre></div>
-<pre><code>0.8936310141917619</code></pre>
+<pre><code>0.8954828660436137</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>coef <span class="op">=</span> pd.DataFrame({<span class="st">&#39;Coefs&#39;</span>: myLogit.coef_[<span class="dv">0</span>], <span class="st">&#39;Names&#39;</span>:predictors})</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>coef <span class="op">=</span> coef.append({<span class="st">&#39;Coefs&#39;</span>: myLogit.intercept_[<span class="dv">0</span>], <span class="st">&#39;Names&#39;</span>:<span class="st">&#39;intercept&#39;</span>}, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>coef</span></code></pre></div>
+<pre><code>      Coefs         Names
+0  3.003088  team_off_epa
+1 -3.095630   opp_off_epa
+2 -0.016955     intercept</code></pre>
+</div>
+<h4 id="odds">Odds</h4>
+<p>Odds show the exponentiated log odds provided from the logit model. Odds means that for every 1 standard deviation increase in X will increase by a factor of the odds.</p>
+<p>Odds are usually more intuitive for stakeholders.</p>
+<p>In this instance, an increase in opponents offensive EPA weighs more heavily than an an increase in the individual teams offensive EPA.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coef[<span class="st">&#39;Odds Coef&#39;</span>] <span class="op">=</span> np.exp(coef[<span class="st">&#39;Coefs&#39;</span>])</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>coef</span></code></pre></div>
+<pre><code>      Coefs         Names  Odds Coef
+0  3.003088  team_off_epa  20.147667
+1 -3.095630   opp_off_epa   0.045247
+2 -0.016955     intercept   0.983188</code></pre>
+</div>
+<h5 id="adjust-the-probability-for-classification-of-a-win">Adjust the probability for classification of a win</h5>
+<p>Threshold modifications won’t do anything to improve performance with this data. Depending on what you are classifying, you can adjust the risk tolerance by changing the threshold of the probabilities.</p>
+<p>For marketing, 20% might be enough to justify sending an ad. In healthcare, a 90% probability might be necessary.</p>
+<p>For our data, it absolutely doesn’t matter… I’ll try to build a better NFL dataset and drop in here!</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> data.iloc[:, <span class="dv">0</span>:<span class="dv">2</span>].copy()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Xnewz <span class="op">=</span> zscore.transform(X_new)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>Ypred_prob <span class="op">=</span> myLogit.predict_proba(Xnewz)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>Ypred_prob[<span class="dv">1</span>:<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>array([[0.66560944, 0.33439056],
+       [0.99209506, 0.00790494],
+       [0.60354635, 0.39645365],
+       [0.73171075, 0.26828925]])</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>Ypred_prob1 <span class="op">=</span> Ypred_prob[:,<span class="dv">1</span>]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>thresh <span class="op">=</span> <span class="fl">0.75</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>Ypred_prob1_thresh <span class="op">=</span> (Ypred_prob1 <span class="op">&gt;</span> thresh) <span class="op">*</span> <span class="dv">1</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>Ypred_prob1_thresh</span></code></pre></div>
+<pre><code>array([0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1,
+       0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+       1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1,
+       0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0,
+       0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0,
+       1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+       0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+       0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+       0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,
+       1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+       1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+       0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0,
+       0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1,
+       1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0,
+       1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1,
+       0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0,
+       0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0,
+       1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0,
+       0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+       0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0,
+       0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1,
+       1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+       0, 0, 0, 1, 1, 0, 1, 1])</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>accuracy_score(data[<span class="st">&#39;outcome&#39;</span>], Ypred_prob1_thresh)</span></code></pre></div>
+<pre><code>0.8563432835820896</code></pre>
 </div>
 <p>That’s it! Either a better logistic model next time, Tidymodels, or the next chapter in ISLR2.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

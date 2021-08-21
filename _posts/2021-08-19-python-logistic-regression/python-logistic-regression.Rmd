@@ -57,6 +57,9 @@ I'm pretty sure I am speaking into the abyss here, but it is a way to keep me ac
 
 This is just a quick Logistic Regression model implemented in both languages. I tried to do a model with NFL data, like most of my blogs. However, it turned out to be quite tedious setting up the data, and I ended up scrapping it down to something I knew would pass. I'm fairly comfortable running standard linear regression as well as logistic, so this is just something to get up on the board and move into deeper topics. 
 
+Ultimately, I would like to manufacture a dataset I can dive deeper on assumptions, or feature engineering. The **LAST** thing I want is to show exporting sklearn and running a Logistic Regression. As I've learned from so many people smarter than me, the dangers of ML come with applying algorithms without thinking about the data. How is it collected? What kind of interpretability does this analysis require? 
+
+Anyone can import the library and run the model, Data Science is much more than that.
 
 ### The Data
 
@@ -140,6 +143,8 @@ data <- reticulate::r_to_py(glm_data)
 
 ### The Python Model
 
+By default, sklearn already imposes a regularization penalty. I'll be diving more into that in a later post. 
+
 ```{python}
 import warnings
 warnings.filterwarnings('ignore')
@@ -156,6 +161,8 @@ from sklearn.model_selection import cross_val_score, cross_val_predict
 from sklearn.datasets import load_diabetes
 
 ```
+
+The same data, without the R predictions. 
 
 ```{python}
 
@@ -178,6 +185,9 @@ Xz_train = zscore.transform(X_train)
 Xz_test = zscore.transform(X_test)
 ```
 
+I actually much prefer the API for sklearn. Python and the OOP framework is easier for me to understand how the logic is applied. R, Tidyverse, and Tidymodels are simple to use, but a lot of times it is difficult for me to debug complex problems because of how much of the technical implementation is abstracted away. 
+
+That is also why it is the elite tool for EDA!
 
 ```{python}
 myLogit = LogisticRegression()
@@ -191,10 +201,13 @@ predictedVals = myLogit.predict(Xz_test)
 accuracy_score(y_test, predictedVals)
 ```
 
+Hmm, can't get this to plot in Rmarkdown...
+
 ```{python}
 confusion_matrix(y_test, predictedVals)
 ```
 
+##### Cross Validation 
 
 ```{python}
 X = data[predictors]
@@ -228,6 +241,60 @@ for train_indicies, test_indicies in kf.split(X):
 print(acc)
 print(np.mean(acc))
 ```
+
+```{python}
+coef = pd.DataFrame({'Coefs': myLogit.coef_[0], 'Names':predictors})
+coef = coef.append({'Coefs': myLogit.intercept_[0], 'Names':'intercept'}, ignore_index=True)
+coef
+```
+
+#### Odds
+
+Odds show the exponentiated log odds provided from the logit model. Odds means that for every 1 standard deviation increase in X will increase by a factor of the odds. 
+
+Odds are usually more intuitive for stakeholders. 
+
+In this instance, an increase in opponents offensive EPA weighs more heavily than an an increase in the individual teams offensive EPA. 
+
+```{python}
+
+coef['Odds Coef'] = np.exp(coef['Coefs'])
+coef
+
+```
+
+##### Adjust the probability for classification of a win
+
+Threshold modifications won't do anything to improve performance with this data. Depending on what you are classifying, you can adjust the risk tolerance by changing the threshold of the probabilities. 
+
+For marketing, 20% might be enough to justify sending an ad. In healthcare, a 90% probability might be necessary.
+
+For our data, it absolutely doesn't matter... I'll try to build a better NFL dataset and drop in here!
+
+```{python}
+X_new = data.iloc[:, 0:2].copy()
+Xnewz = zscore.transform(X_new)
+
+Ypred_prob = myLogit.predict_proba(Xnewz)
+Ypred_prob[1:5]
+```
+
+```{python}
+
+Ypred_prob1 = Ypred_prob[:,1]
+
+thresh = 0.75
+
+Ypred_prob1_thresh = (Ypred_prob1 > thresh) * 1
+
+Ypred_prob1_thresh
+
+
+accuracy_score(data['outcome'], Ypred_prob1_thresh)
+
+
+```
+
 
 That's it! Either a better logistic model next time, Tidymodels, or the next chapter in ISLR2.  
 
