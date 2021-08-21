@@ -149,11 +149,7 @@ rmarkdown::paged_table(dfs)
 
 ## Player's Data
 
-I **LOVE** <span style="color: blue">#rstats</span>, but Python was my first programming language. I know how to work with certain data structures outside of data frames better. 
-
-Thankfully, with the help of the developers at Rstudio, we can run Python **AND** R for one project. With **{rmarkdown}** & **{reticulate}** I can leverage strengths of both languages, and pass data along to one another. 
-
-To get the player's information, I will call the API for players. 
+To get the player's information, I will call the API for players with Python. 
 
 
 ```{r, out.width='60%', echo=FALSE}
@@ -332,9 +328,9 @@ dat <- inner_join(lonesome_bids, total) %>%
 
 ```{r}
 p <- dat %>%   
-  ggplot(aes(reorder(display_name, total_spent))) +
-  geom_col(aes(y=total_spent), fill="#003399", width = 0.9, alpha=0.81) +
-  geom_col(aes(y=no_opposition), fill = "#ff2b4f", width = 0.9, alpha=01) +
+  ggplot(aes(y=reorder(display_name, total_spent))) +
+  geom_col(aes(x=total_spent), fill="#003399", width = 0.9, alpha=0.81) +
+  geom_col(aes(x=no_opposition), fill = "#ff2b4f", width = 0.9, alpha=01) +
   theme_fivethirtyeight() +
   labs(
     title = '<span style = "color: #003399">Total Bids</span> vs Bids When <span style = "color: #ff2b4f">No One Else Bid</span>',
@@ -343,19 +339,19 @@ p <- dat %>%
     y=NULL
   ) +
   theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
     plot.title = element_markdown(),
     plot.subtitle = element_text(
       size = 14
     ),
-    axis.text.x = element_text(
+    axis.text.y = element_text(
       size = 15, 
-      angle = 45, 
+      #angle = 45, 
       face = "bold"
     )
     ) +
-  scale_y_continuous(labels=scales::dollar_format()) +
+  scale_x_continuous(labels=scales::dollar_format()) +
   scale_fill_manual(values = c("#ff2b4f", "#003399")) 
 
 ```
@@ -430,7 +426,7 @@ dat %>%
 
 ---
 
-That's a wrap! Thank's for joining me on this project. I wanted to give thanks to Thomas Mock and his blog [The Mockup Blog](https://themockup.blog/). 
+I wanted to give thanks to Thomas Mock and his blog [The Mockup Blog](https://themockup.blog/). 
 
 He is an excellent resource, both with the site as well as on Twitter. 
 

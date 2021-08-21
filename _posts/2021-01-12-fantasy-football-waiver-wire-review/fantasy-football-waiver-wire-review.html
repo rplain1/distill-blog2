@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["fantasy-football-waiver-wire-review_files/anchor-4.2.2/anchor.min.js","fantasy-football-waiver-wire-review_files/bowser-1.9.3/bowser.min.js","fantasy-football-waiver-wire-review_files/distill-2.2.21/template.v2.js","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-14-1.png","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-15-1.png","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-17-1.png","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-18-1.png","fantasy-football-waiver-wire-review_files/header-attrs-2.6/header-attrs.js","fantasy-football-waiver-wire-review_files/jquery-1.11.3/jquery.min.js","fantasy-football-waiver-wire-review_files/kePrint-0.0.1/kePrint.js","fantasy-football-waiver-wire-review_files/lightable-0.0.1/lightable.css","fantasy-football-waiver-wire-review_files/pagedtable-1.1/css/pagedtable.css","fantasy-football-waiver-wire-review_files/pagedtable-1.1/js/pagedtable.js","fantasy-football-waiver-wire-review_files/webcomponents-2.0.0/webcomponents.js","img/bids.png","img/final_chart.png","img/league_transactions.png","img/players.png"]}
+  {"type":"character","attributes":{},"value":["fantasy-football-waiver-wire-review_files/anchor-4.2.2/anchor.min.js","fantasy-football-waiver-wire-review_files/bowser-1.9.3/bowser.min.js","fantasy-football-waiver-wire-review_files/distill-2.2.21/template.v2.js","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-14-1.png","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-15-1.png","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-17-1.png","fantasy-football-waiver-wire-review_files/figure-html5/unnamed-chunk-18-1.png","fantasy-football-waiver-wire-review_files/header-attrs-2.6/header-attrs.js","fantasy-football-waiver-wire-review_files/header-attrs-2.7/header-attrs.js","fantasy-football-waiver-wire-review_files/header-attrs-2.8/header-attrs.js","fantasy-football-waiver-wire-review_files/jquery-1.11.3/jquery.min.js","fantasy-football-waiver-wire-review_files/kePrint-0.0.1/kePrint.js","fantasy-football-waiver-wire-review_files/lightable-0.0.1/lightable.css","fantasy-football-waiver-wire-review_files/pagedtable-1.1/css/pagedtable.css","fantasy-football-waiver-wire-review_files/pagedtable-1.1/js/pagedtable.js","fantasy-football-waiver-wire-review_files/popper-2.6.0/popper.min.js","fantasy-football-waiver-wire-review_files/tippy-6.2.7/tippy-bundle.umd.min.js","fantasy-football-waiver-wire-review_files/tippy-6.2.7/tippy-light-border.css","fantasy-football-waiver-wire-review_files/tippy-6.2.7/tippy.css","fantasy-football-waiver-wire-review_files/tippy-6.2.7/tippy.umd.min.js","fantasy-football-waiver-wire-review_files/webcomponents-2.0.0/webcomponents.js","img/bids.png","img/final_chart.png","img/league_transactions.png","img/players.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1434,7 +1434,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="fantasy-football-waiver-wire-review_files/header-attrs-2.7/header-attrs.js"></script>
+  <script src="fantasy-football-waiver-wire-review_files/header-attrs-2.8/header-attrs.js"></script>
   <link href="fantasy-football-waiver-wire-review_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
   <script src="fantasy-football-waiver-wire-review_files/pagedtable-1.1/js/pagedtable.js"></script>
   <script src="fantasy-football-waiver-wire-review_files/jquery-1.11.3/jquery.min.js"></script>
@@ -1457,7 +1457,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Fantasy Football Waiver Wire Review","description":"Analyzing data from Sleeper's API of my Fantasy Football league to see how each team did managing the waiver wire.","authors":[{"author":"Ryan Plain","authorURL":"https://example.com/norajones","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-01-12T00:00:00.000+00:00","citationText":"Plain, 2021"}
+{"title":"Fantasy Football Waiver Wire Review","description":"Analyzing data from Sleeper's API of my Fantasy Football league to see how each team did managing the waiver wire.","authors":[{"author":"Ryan Plain","authorURL":"https://example.com/norajones","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-01-12T00:00:00.000-06:00","citationText":"Plain, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1498,15 +1498,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Import the necessary libraries</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> <span class='co'># all the things</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://rvest.tidyverse.org/'>rvest</a></span><span class='op'>)</span> <span class='co'># webscraping</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> <span class='co'># all the things</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rvest.tidyverse.org/'>rvest</a></span><span class='op'>)</span> <span class='co'># webscraping</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://arxiv.org/abs/1403.2805'>jsonlite</a></span><span class='op'>)</span> <span class='co'># json to dataframe</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://httr.r-lib.org/'>httr</a></span><span class='op'>)</span> <span class='co'># GET request</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/reticulate'>reticulate</a></span><span class='op'>)</span> <span class='co'># python</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://wilkelab.org/ggtext/'>ggtext</a></span><span class='op'>)</span> <span class='co'># add markdown elements to ggplot</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jrnold/ggthemes'>ggthemes</a></span><span class='op'>)</span> 
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/EmilHvitfeldt/paletteer'>paletteer</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/gt'>gt</a></span><span class='op'>)</span> <span class='co'># beautiful tables in R</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span> <span class='co'># beautiful tables in R</span>
 </code></pre>
 </div>
 </div>
@@ -1539,7 +1539,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 4 &lt;list [0]&gt;    waiver 611783466522112000  1600358696203 failed  
 5 &lt;list [0]&gt;    waiver 611783188246806528  1600272284877 failed  
 6 &lt;list [0]&gt;    waiver 611783128805130240  1600272284877 failed  
-# … with 9 more variables: settings &lt;df[,3]&gt;, roster_ids &lt;list&gt;,
+# ... with 9 more variables: settings &lt;df[,3]&gt;, roster_ids &lt;list&gt;,
 #   metadata &lt;df[,1]&gt;, leg &lt;int&gt;, draft_picks &lt;list&gt;, creator &lt;chr&gt;,
 #   created &lt;dbl&gt;, consenter_ids &lt;list&gt;, adds &lt;df[,15]&gt;</code></pre>
 </div>
@@ -1600,9 +1600,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <hr />
 <h2 id="players-data">Player’s Data</h2>
-<p>I <strong>LOVE</strong> <span style="color: blue">#rstats</span>, but Python was my first programming language. I know how to work with certain data structures outside of data frames better.</p>
-<p>Thankfully, with the help of the developers at Rstudio, we can run Python <strong>AND</strong> R for one project. With <strong>{rmarkdown}</strong> &amp; <strong>{reticulate}</strong> I can leverage strengths of both languages, and pass data along to one another.</p>
-<p>To get the player’s information, I will call the API for players.</p>
+<p>To get the player’s information, I will call the API for players with Python.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/players.png" width="60%" /></p>
 </div>
@@ -1689,7 +1687,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["display_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["no_opposition"],"name":[2],"type":["int"],"align":["right"]},{"label":["player_amount"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"benmann26","2":"30","3":"10","_rn_":"1"},{"1":"Callmedougfunny","2":"5","3":"2","_rn_":"2"},{"1":"DirtyMcCurdy","2":"21","3":"6","_rn_":"3"},{"1":"jcbryant12","2":"0","3":"0","_rn_":"4"},{"1":"manthony94","2":"46","3":"31","_rn_":"5"},{"1":"OnlyMike19","2":"21","3":"7","_rn_":"6"},{"1":"rplain","2":"72","3":"24","_rn_":"7"},{"1":"sauceboss91","2":"31","3":"8","_rn_":"8"},{"1":"waynemcfadin","2":"33","3":"31","_rn_":"9"},{"1":"ZachAttack14","2":"27","3":"6","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["display_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["no_opposition"],"name":[2],"type":["int"],"align":["right"]},{"label":["player_amount"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"benmann26","2":"30","3":"10"},{"1":"Callmedougfunny","2":"5","3":"2"},{"1":"DirtyMcCurdy","2":"21","3":"6"},{"1":"jcbryant12","2":"0","3":"0"},{"1":"manthony94","2":"46","3":"31"},{"1":"OnlyMike19","2":"21","3":"7"},{"1":"rplain","2":"72","3":"24"},{"1":"sauceboss91","2":"21","3":"8"},{"1":"waynemcfadin","2":"31","3":"31"},{"1":"ZachAttack14","2":"25","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1751,9 +1749,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='va'>dat</span> <span class='op'>%&gt;%</span>   
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>display_name</span>, <span class='va'>total_spent</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_col</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y<span class='op'>=</span><span class='va'>total_spent</span><span class='op'>)</span>, fill<span class='op'>=</span><span class='st'>"#003399"</span>, width <span class='op'>=</span> <span class='fl'>0.9</span>, alpha<span class='op'>=</span><span class='fl'>0.81</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_col</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y<span class='op'>=</span><span class='va'>no_opposition</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='st'>"#ff2b4f"</span>, width <span class='op'>=</span> <span class='fl'>0.9</span>, alpha<span class='op'>=</span><span class='fl'>01</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>display_name</span>, <span class='va'>total_spent</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>total_spent</span><span class='op'>)</span>, fill<span class='op'>=</span><span class='st'>"#003399"</span>, width <span class='op'>=</span> <span class='fl'>0.9</span>, alpha<span class='op'>=</span><span class='fl'>0.81</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>no_opposition</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='st'>"#ff2b4f"</span>, width <span class='op'>=</span> <span class='fl'>0.9</span>, alpha<span class='op'>=</span><span class='fl'>01</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://rdrr.io/pkg/ggthemes/man/theme_fivethirtyeight.html'>theme_fivethirtyeight</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>
     title <span class='op'>=</span> <span class='st'>'&lt;span style = "color: #003399"&gt;Total Bids&lt;/span&gt; vs Bids When &lt;span style = "color: #ff2b4f"&gt;No One Else Bid&lt;/span&gt;'</span>,
@@ -1762,19 +1760,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     y<span class='op'>=</span><span class='cn'>NULL</span>
   <span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme</span><span class='op'>(</span>
-    panel.grid.major.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
-    panel.grid.minor.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+    panel.grid.major.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+    panel.grid.minor.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
     plot.title <span class='op'>=</span> <span class='fu'><a href='https://wilkelab.org/ggtext/reference/element_markdown.html'>element_markdown</a></span><span class='op'>(</span><span class='op'>)</span>,
     plot.subtitle <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
       size <span class='op'>=</span> <span class='fl'>14</span>
     <span class='op'>)</span>,
-    axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+    axis.text.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
       size <span class='op'>=</span> <span class='fl'>15</span>, 
-      angle <span class='op'>=</span> <span class='fl'>45</span>, 
+      <span class='co'>#angle = 45, </span>
       face <span class='op'>=</span> <span class='st'>"bold"</span>
     <span class='op'>)</span>
     <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>labels<span class='op'>=</span><span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/label_dollar.html'>dollar_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_x_continuous</span><span class='op'>(</span>labels<span class='op'>=</span><span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_dollar.html'>dollar_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#ff2b4f"</span>, <span class='st'>"#003399"</span><span class='op'>)</span><span class='op'>)</span> 
 </code></pre>
 </div>
@@ -1791,63 +1789,64 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dat</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>no_opposition</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>select</span><span class='op'>(</span>Name <span class='op'>=</span> <span class='va'>display_name</span>, `Total Bid` <span class='op'>=</span> <span class='va'>total_spent</span>, Player <span class='op'>=</span> <span class='va'>full_name</span>, Bid <span class='op'>=</span> <span class='va'>max_bid</span>, `Only Bidder` <span class='op'>=</span> <span class='va'>no_opposition</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/data_color.html'>data_color</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://gt.rstudio.com/reference/data_color.html'>data_color</a></span><span class='op'>(</span>
     columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>`Only Bidder`</span><span class='op'>)</span>,
-    colors <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/col_numeric.html'>col_numeric</a></span><span class='op'>(</span>
+    colors <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/col_numeric.html'>col_numeric</a></span><span class='op'>(</span>
       palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='fu'>paletteer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/paletteer/man/paletteer_d.html'>paletteer_d</a></span><span class='op'>(</span><span class='st'>"ggsci::red_material"</span>, n <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>,
       domain <span class='op'>=</span> <span class='cn'>NULL</span>
-    <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/fmt_currency.html'>fmt_currency</a></span><span class='op'>(</span>
+    <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='fu'><a href='https://gt.rstudio.com/reference/fmt_currency.html'>fmt_currency</a></span><span class='op'>(</span>
     columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>`Only Bidder`</span>, <span class='va'>`Total Bid`</span>, <span class='va'>Bid</span><span class='op'>)</span>,
     decimals <span class='op'>=</span> <span class='fl'>0</span>,
   <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cols_align.html'>cols_align</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/cols_align.html'>cols_align</a></span><span class='op'>(</span>
     align <span class='op'>=</span> <span class='st'>"right"</span>,
     columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>`Only Bidder`</span>, <span class='va'>`Total Bid`</span>, <span class='va'>Bid</span><span class='op'>)</span>
   <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_style.html'>tab_style</a></span><span class='op'>(</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style</a></span><span class='op'>(</span>
     style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cell_borders.html'>cell_borders</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://gt.rstudio.com/reference/cell_borders.html'>cell_borders</a></span><span class='op'>(</span>
         sides <span class='op'>=</span> <span class='st'>"left"</span>,
         color <span class='op'>=</span> <span class='st'>"black"</span>,
-        weight <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
+        weight <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
       <span class='op'>)</span>
     <span class='op'>)</span>,
     locations <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cells_body.html'>cells_body</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://gt.rstudio.com/reference/cells_body.html'>cells_body</a></span><span class='op'>(</span>
         columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>`Only Bidder`</span><span class='op'>)</span>
       <span class='op'>)</span>
     <span class='op'>)</span>
   <span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_style.html'>tab_style</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_style.html'>tab_style</a></span><span class='op'>(</span>
     style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cell_borders.html'>cell_borders</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://gt.rstudio.com/reference/cell_borders.html'>cell_borders</a></span><span class='op'>(</span>
         sides <span class='op'>=</span> <span class='st'>"bottom"</span>,
         color <span class='op'>=</span> <span class='st'>"black"</span>,
-        weight <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
+        weight <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
       <span class='op'>)</span>
     <span class='op'>)</span>,
     locations <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cells_column_labels.html'>cells_column_labels</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://gt.rstudio.com/reference/cells_column_labels.html'>cells_column_labels</a></span><span class='op'>(</span>
         columns <span class='op'>=</span> <span class='fu'>gt</span><span class='fu'>::</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>
       <span class='op'>)</span>
     <span class='op'>)</span>
   <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cols_label.html'>cols_label</a></span><span class='op'>(</span>
+   <span class='fu'><a href='https://gt.rstudio.com/reference/cols_label.html'>cols_label</a></span><span class='op'>(</span>
     `Total Bid` <span class='op'>=</span> <span class='st'>"Total Spent"</span>,
     Name <span class='op'>=</span> <span class='st'>""</span>
   <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_header.html'>tab_header</a></span><span class='op'>(</span>
-    title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/md.html'>md</a></span><span class='op'>(</span><span class='st'>"**Mistakes Were Made**"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://gt.rstudio.com/reference/tab_header.html'>tab_header</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='fu'><a href='https://gt.rstudio.com/reference/md.html'>md</a></span><span class='op'>(</span><span class='st'>"**Mistakes Were Made**"</span><span class='op'>)</span>,
     subtitle <span class='op'>=</span> <span class='st'>"How much each person spent, along with who they wasted the most money on"</span>
   <span class='op'>)</span>
 </code></pre>
 </div>
+<div id="vjfzzbefgr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jrieqpzzsk .gt_table {
+#vjfzzbefgr .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1872,7 +1871,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_heading {
+#vjfzzbefgr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1884,7 +1883,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_title {
+#vjfzzbefgr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1894,23 +1893,23 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#jrieqpzzsk .gt_subtitle {
+#vjfzzbefgr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#jrieqpzzsk .gt_bottom_border {
+#vjfzzbefgr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_col_headings {
+#vjfzzbefgr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1925,7 +1924,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_col_heading {
+#vjfzzbefgr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1945,7 +1944,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#jrieqpzzsk .gt_column_spanner_outer {
+#vjfzzbefgr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1957,27 +1956,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#jrieqpzzsk .gt_column_spanner_outer:first-child {
+#vjfzzbefgr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jrieqpzzsk .gt_column_spanner_outer:last-child {
+#vjfzzbefgr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jrieqpzzsk .gt_column_spanner {
+#vjfzzbefgr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#jrieqpzzsk .gt_group_heading {
+#vjfzzbefgr .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1999,7 +1998,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#jrieqpzzsk .gt_empty_group_heading {
+#vjfzzbefgr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2014,15 +2013,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#jrieqpzzsk .gt_from_md > :first-child {
+#vjfzzbefgr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jrieqpzzsk .gt_from_md > :last-child {
+#vjfzzbefgr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jrieqpzzsk .gt_row {
+#vjfzzbefgr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2041,7 +2040,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#jrieqpzzsk .gt_stub {
+#vjfzzbefgr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2053,7 +2052,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#jrieqpzzsk .gt_summary_row {
+#vjfzzbefgr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2063,7 +2062,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#jrieqpzzsk .gt_first_summary_row {
+#vjfzzbefgr .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2073,7 +2072,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_grand_summary_row {
+#vjfzzbefgr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2083,7 +2082,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#jrieqpzzsk .gt_first_grand_summary_row {
+#vjfzzbefgr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2093,11 +2092,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_striped {
+#vjfzzbefgr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jrieqpzzsk .gt_table_body {
+#vjfzzbefgr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2106,7 +2105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_footnotes {
+#vjfzzbefgr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2120,13 +2119,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_footnote {
+#vjfzzbefgr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#jrieqpzzsk .gt_sourcenotes {
+#vjfzzbefgr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2140,46 +2139,47 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#jrieqpzzsk .gt_sourcenote {
+#vjfzzbefgr .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#jrieqpzzsk .gt_left {
+#vjfzzbefgr .gt_left {
   text-align: left;
 }
 
-#jrieqpzzsk .gt_center {
+#vjfzzbefgr .gt_center {
   text-align: center;
 }
 
-#jrieqpzzsk .gt_right {
+#vjfzzbefgr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jrieqpzzsk .gt_font_normal {
+#vjfzzbefgr .gt_font_normal {
   font-weight: normal;
 }
 
-#jrieqpzzsk .gt_font_bold {
+#vjfzzbefgr .gt_font_bold {
   font-weight: bold;
 }
 
-#jrieqpzzsk .gt_font_italic {
+#vjfzzbefgr .gt_font_italic {
   font-style: italic;
 }
 
-#jrieqpzzsk .gt_super {
+#vjfzzbefgr .gt_super {
   font-size: 65%;
 }
 
-#jrieqpzzsk .gt_footnote_marks {
+#vjfzzbefgr .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="jrieqpzzsk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Mistakes Were Made</strong></th>
@@ -2198,76 +2198,59 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">Ryan</td>
-      <td class="gt_row gt_right">$100</td>
-      <td class="gt_row gt_left">Joshua Kelley</td>
-      <td class="gt_row gt_right">$24</td>
-      <td class="gt_row gt_right" style="background-color: #EF5350; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$72</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Mitch</td>
-      <td class="gt_row gt_right">$71</td>
-      <td class="gt_row gt_left">Jeffery Wilson</td>
-      <td class="gt_row gt_right">$31</td>
-      <td class="gt_row gt_right" style="background-color: #EB8988; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$46</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Wayne</td>
-      <td class="gt_row gt_right">$57</td>
-      <td class="gt_row gt_left">Henry Ruggs</td>
-      <td class="gt_row gt_right">$31</td>
-      <td class="gt_row gt_right" style="background-color: #F5ABAC; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$33</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Tony</td>
-      <td class="gt_row gt_right">$85</td>
-      <td class="gt_row gt_left">Nyheim Hines</td>
-      <td class="gt_row gt_right">$8</td>
-      <td class="gt_row gt_right" style="background-color: #F7B1B3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$31</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Ben</td>
-      <td class="gt_row gt_right">$50</td>
-      <td class="gt_row gt_left">Ryan Tannehill</td>
-      <td class="gt_row gt_right">$10</td>
-      <td class="gt_row gt_right" style="background-color: #F8B4B6; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$30</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Zach</td>
-      <td class="gt_row gt_right">$27</td>
-      <td class="gt_row gt_left">Robert Tonyan</td>
-      <td class="gt_row gt_right">$6</td>
-      <td class="gt_row gt_right" style="background-color: #FBBDC0; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$27</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Connor</td>
-      <td class="gt_row gt_right">$77</td>
-      <td class="gt_row gt_left">Brandin Cooks</td>
-      <td class="gt_row gt_right">$6</td>
-      <td class="gt_row gt_right" style="background-color: #FFCED3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$21</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Mike</td>
-      <td class="gt_row gt_right">$91</td>
-      <td class="gt_row gt_left">D'Ernest Johnson</td>
-      <td class="gt_row gt_right">$7</td>
-      <td class="gt_row gt_right" style="background-color: #FFCED3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$21</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Jacob</td>
-      <td class="gt_row gt_right">$98</td>
-      <td class="gt_row gt_left">PHI</td>
-      <td class="gt_row gt_right">$2</td>
-      <td class="gt_row gt_right" style="background-color: #FFEBEE; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$5</td>
-    </tr>
+    <tr><td class="gt_row gt_left">Ryan</td>
+<td class="gt_row gt_right">$100</td>
+<td class="gt_row gt_left">Joshua Kelley</td>
+<td class="gt_row gt_right">$24</td>
+<td class="gt_row gt_right" style="background-color: #EF5350; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$72</td></tr>
+    <tr><td class="gt_row gt_left">Mitch</td>
+<td class="gt_row gt_right">$71</td>
+<td class="gt_row gt_left">Jeffery Wilson</td>
+<td class="gt_row gt_right">$31</td>
+<td class="gt_row gt_right" style="background-color: #EB8988; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$46</td></tr>
+    <tr><td class="gt_row gt_left">Wayne</td>
+<td class="gt_row gt_right">$57</td>
+<td class="gt_row gt_left">Henry Ruggs</td>
+<td class="gt_row gt_right">$31</td>
+<td class="gt_row gt_right" style="background-color: #F7B1B3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$31</td></tr>
+    <tr><td class="gt_row gt_left">Ben</td>
+<td class="gt_row gt_right">$50</td>
+<td class="gt_row gt_left">Ryan Tannehill</td>
+<td class="gt_row gt_right">$10</td>
+<td class="gt_row gt_right" style="background-color: #F8B4B6; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$30</td></tr>
+    <tr><td class="gt_row gt_left">Zach</td>
+<td class="gt_row gt_right">$27</td>
+<td class="gt_row gt_left">Robert Tonyan</td>
+<td class="gt_row gt_right">$6</td>
+<td class="gt_row gt_right" style="background-color: #FCC3C7; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$25</td></tr>
+    <tr><td class="gt_row gt_left">Connor</td>
+<td class="gt_row gt_right">$77</td>
+<td class="gt_row gt_left">Brandin Cooks</td>
+<td class="gt_row gt_right">$6</td>
+<td class="gt_row gt_right" style="background-color: #FFCED3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$21</td></tr>
+    <tr><td class="gt_row gt_left">Mike</td>
+<td class="gt_row gt_right">$91</td>
+<td class="gt_row gt_left">D'Ernest Johnson</td>
+<td class="gt_row gt_right">$7</td>
+<td class="gt_row gt_right" style="background-color: #FFCED3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$21</td></tr>
+    <tr><td class="gt_row gt_left">Tony</td>
+<td class="gt_row gt_right">$85</td>
+<td class="gt_row gt_left">Nyheim Hines</td>
+<td class="gt_row gt_right">$8</td>
+<td class="gt_row gt_right" style="background-color: #FFCED3; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$21</td></tr>
+    <tr><td class="gt_row gt_left">Jacob</td>
+<td class="gt_row gt_right">$98</td>
+<td class="gt_row gt_left">PHI</td>
+<td class="gt_row gt_right">$2</td>
+<td class="gt_row gt_right" style="background-color: #FFEBEE; color: #000000; border-left-width: 3px; border-left-style: solid; border-left-color: black;">$5</td></tr>
   </tbody>
   
   
-</table></div>
+</table>
+</div>
 </div>
 <hr />
-<p>That’s a wrap! Thank’s for joining me on this project. I wanted to give thanks to Thomas Mock and his blog <a href="https://themockup.blog/">The Mockup Blog</a>.</p>
+<p>I wanted to give thanks to Thomas Mock and his blog <a href="https://themockup.blog/">The Mockup Blog</a>.</p>
 <p>He is an excellent resource, both with the site as well as on Twitter.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
