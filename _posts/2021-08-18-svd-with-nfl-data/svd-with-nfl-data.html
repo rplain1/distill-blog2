@@ -1482,9 +1482,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
 <h1 id="singular-value-decomposition">Singular Value Decomposition</h1>
 <h3 id="dimensionality-reduction">Dimensionality Reduction</h3>
-<p>This was one of the most facinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided.</p>
+<p>This was one of the most fascinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided.</p>
 <p>I wanted to walk through an example from scratch in R. I’ll be using open source NFL data provided by <strong>nflreadr</strong> and the open source developers of <strong>nflverse</strong>. You can check out their work at <a href="https://github.com/nflverse" class="uri">https://github.com/nflverse</a>.</p>
-<p>I’ll quickly load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in <em>all shapes and sizes</em>, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes.</p>
+<p>First load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in <em>all shapes and sizes</em>, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes.</p>
 <p>Data:</p>
 <ul>
 <li><strong>rec</strong>: total receptions to filter out players with small sample size</li>
@@ -1492,7 +1492,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><strong>yards_per_target</strong>: total yards / targets</li>
 <li><strong>yards_after_catch</strong>: yards after the ball was caught</li>
 <li><strong>td_rate</strong>: touchdowns per target</li>
-<li><strong>outside_rec</strong>: binary varibale if the receiver caught the ball outside the hashes</li>
+<li><strong>outside_rec</strong>: binary variable if the receiver caught the ball outside the hashes</li>
 <li><strong>dist_from_sticks</strong>: where they were targeted relative to distance needed to continue drive</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
@@ -1553,6 +1553,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 # ... with 123 more rows, and 1 more variable: dist_from_sticks &lt;dbl&gt;</code></pre>
 </div>
 <h2 id="pca-from-scratch">PCA from scratch</h2>
+<p>Singular value decomposition is a matrix factorization method that generalizes eigendecomposition of a matrix.</p>
+<p><span class="math inline">\(U\)</span></p>
+<p><span class="math inline">\(\Sigma\)</span> is the diagonal matrix containing the eigenvalues</p>
+<p><span class="math inline">\(V\)</span> contains the eigen vectors</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>U</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/svd.html'>svd</a></span><span class='op'>(</span><span class='va'>wr_stats</span><span class='op'>)</span><span class='op'>$</span><span class='va'>u</span>

@@ -24,12 +24,12 @@ Learn more about using Distill at <https://rstudio.github.io/distill>.
 
 ### Dimensionality Reduction
 
-This was one of the most facinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided. 
+This was one of the most fascinating concepts to me when I began my graduate program. We processed an image in python and played around with the different resolutions we could provide based on the values provided. 
 
 I wanted to walk through an example from scratch in R. I'll be using open source NFL data provided by **nflreadr** and the open source developers of **nflverse**. You can check out their work at https://github.com/nflverse.
 
 
-I'll quickly load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in *all shapes and sizes*, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes. 
+First load in some NFL data from 2014 - 2020 and create some wide receiver stats from the play by play data. In the NFL, wide receivers come in *all shapes and sizes*, with different skill sets. Some work quick underneath routes, some are deep vertical threats. There is a wide variety within one position group, which makes it a great candidate for dimensionality reduction to look at archetypes. 
 
 Data: 
 
@@ -38,7 +38,7 @@ Data:
 - **yards_per_target**: total yards / targets 
 - **yards_after_catch**: yards after the ball was caught
 - **td_rate**: touchdowns per target
-- **outside_rec**: binary varibale if the receiver caught the ball outside the hashes
+- **outside_rec**: binary variable if the receiver caught the ball outside the hashes
 - **dist_from_sticks**: where they were targeted relative to distance needed to continue drive
 
 ```{r, include=TRUE}
@@ -83,6 +83,15 @@ wr_stats %>%
 ```
 
 ## PCA from scratch
+
+Singular value decomposition is a matrix factorization method that generalizes eigendecomposition of a matrix.
+
+$U$ 
+
+$\Sigma$ is the diagonal matrix containing the eigenvalues
+
+$V$ contains the eigen vectors
+
 
 ```{r, include=TRUE}
 
