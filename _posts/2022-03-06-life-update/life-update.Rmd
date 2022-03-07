@@ -1,0 +1,45 @@
+---
+title: "Update"
+description: |
+  Where I'm at
+author:
+  - name: Ryan Plain
+    url: {}
+date: 2022-03-06
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Goals
+
+It turned out that the goals I mentioned in previous blog posts, I wasn't able to make happen. 
+
+## What happened?
+
+I was searching for a job summer of 2021, I had felt my time within the Facilities department at Southwest Airlines had run its course. I learned so much, and really appreciate having the opportunity to have a blank slate to practice, research, and build with. 
+
+Over time, it became an uphill battle of learning. I was the only person of my skill set on the team, and most of my stakeholders had little to no technical background. Along with that, the department had limited infrastructure to support my work, since everything I was doing was new to them. 
+
+About the time I wanted to begin revamping the blog, I was in the middle of interviews and just started a semester of 2 classes. Needless to say I didn't have the time. 
+
+## What now?
+
+I landed the job at Clover, and revamped my website to allow other links. My career and recent school work is heavily Python based. While you can use **reticulate** in #Rstats, it has some limitations. I am excited to still have the foundation in R with **postcards** for my website. 
+
+I'm not sure what I want to do yet but I think the best thing for my career growth is to work on public projects, and multiple topics of interest. For years I was so hyper focused on my work at Southwest, and learning because I was not satisfied where I was. That ultimately lead to burnout. A better approach to learning would be to have well rounded inputs of information and application. 
+
+Ultimately I want to work on projects that I enjoy again. My first posts were of things that interested me, the second two were attempts at building a portfolio since most of my work is not publicly available. I'm not exactly proud of those, but I hope to have more engaging content soon. It should be easier now, after going through the learning curve of Git...
+
+---
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+
